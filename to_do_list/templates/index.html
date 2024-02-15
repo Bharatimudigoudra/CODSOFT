@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+</head>
+<body>
+    <h1>To-Do List</h1>
+    <form action="/add_task" method="post">
+        <label for="task">New Task:</label>
+        <input type="text" id="task" name="task" required>
+        <input type="submit" value="Add Task">
+    </form>
+
+    <ul>
+        {% for index, task in enumerate(tasks) %}
+            <li>
+                {{ task }}
+                <form action="/update_task/{{ index }}" method="post" style="display: inline;">
+                    <input type="text" name="updated_task" value="{{ task }}" required>
+                    <button type="submit">Update</button>
+                </form>
+                <a href="{{ url_for('delete_task', index=index) }}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

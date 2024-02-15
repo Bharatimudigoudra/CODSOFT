@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Search</title>
+</head>
+<body>
+    <h1>Search Results for "{{ query }}"</h1>
+    <ul>
+        {% for contact in contacts %}
+            <li>{{ contact.name }} - {{ contact.phone }} <a href="{{ url_for('update_contact', name=contact.name) }}">Update</a> <a href="{{ url_for('delete_contact', name=contact.name) }}">Delete</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
